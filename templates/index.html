@@ -5,36 +5,40 @@
 {% endblock %}
 
 {% block body %}
-<div class="content">
-    <h1 style="text-align: center">Task Master</h1>
+    <div class="container">
+        <h1 class="text-center py-4 display-4">Task Master</h1>
     {% if tasks|length < 1 %}
-    <h4 style="text-align: center">There are no tasks. Create one below!</h4>
+    <h4 class="text-center">There are no tasks. Create one below!</h4>
     {% else %}
-    <table>
-        <tr>
-            <th>Task</th>
-            <th>Added</th>
-            <th>Actions</th>
+
+    <table class="table table-striped table-sm table-hover">
+        <tr class="text-center">
+            <th>#</th>
+            <th style="width: 80%">Task</th>
+            <th style="width: 10%">Added</th>
+            <th colspan="2">Actions</th>
         </tr>
         {% for task in tasks %}
-            <tr>
+            <tr class="text-muted">
+                <td>{{ task.id }}</td>
                 <td>{{ task.content }}</td>
                 <td>{{ task.date_created.date() }}</td>
                 <td>
-                    <a href="/delete/{{task.id}}">Delete</a>
-                    <br>
-                    <a href="/update/{{task.id}}">Update</a>
+                    <a href="/delete/{{task.id}}" class="btn btn-danger">Delete</a>
+                </td>
+                <td>
+                    <a href="/update/{{task.id}}" class="btn btn-info">Update</a>
                 </td>
             </tr>
         {% endfor %}
     </table>
     {% endif %}
 
-    <div class="form">
+    <div class="form-group pt-3">
         <form action="/" method="POST">
-            <input type="text" name="content" id="content">
-            <input type="submit" value="Add Task">
+        <input type="text" name="content" class="form-control" placeholder="Add a new Task..."/>
+        <input type="submit" class="btn btn-success form-control mt-2" value="Add Task" />
         </form>
-    </div>
+   </div>
 </div>
 {% endblock %}

@@ -5,13 +5,14 @@
 {% endblock %}
 
 {% block body %}
-<div class="content">
-    <h1 style="text-align: center">Update Task</h1>
+<div class="container">
+    <h1 class="text-center py-4 display-4">Task Master</h1>
+    <h4 class="text-center">Update Task</h4>
 
-    <div class="form">
+    <div class="form-group pt-3">
         <form action="/update/{{task.id}}" method="POST">
-            <input type="text" name="content" id="content" value="{{task.content}}">
-            <input type="submit" value="Update">
+            <input type="text" name="content" class="form-control" value="{{task.content}}">
+            <input type="submit" value="Update" class="btn btn-success form-control mt-2">
         </form>
     </div>
 </div>

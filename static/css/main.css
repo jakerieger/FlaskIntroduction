@@ -4,7 +4,11 @@ body, html {
     background-color: lightblue;
 }
 
-.content {
+/**
+Comment this section since it's no longer needed with bootstrap
+*/
+
+/* .content {
     margin: 0 auto;
     width: 400px;
 }
@@ -33,4 +37,4 @@ td {
 
 #content {
     width: 70%;
-}
+} */
