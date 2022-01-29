@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloud-flask-svc
+spec:
+  selector:
+    app: cloud-flask
+  ports:
+   -  protocol: TCP
+      port: 8080
+      targetPort: 5000
+  # type: NodePort
+  type: LoadBalancer

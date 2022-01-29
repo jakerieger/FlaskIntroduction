@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-flask
+  labels:
+    app: cloud-flask
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloud-flask
+  template:
+    metadata:
+      labels:
+        app: cloud-flask
+    spec:
+      containers:
+      - image: cloudacode/freecodetodo:latest
+        imagePullPolicy: Always
+        name: cloud-flask
+        ports:
+        - containerPort: 5000
+          protocol: TCP
