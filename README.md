@@ -2,7 +2,25 @@
 
 This repo has been updated to work with `Python v3.8` and up.
 
-### How To Run
+## Docker Container(test locally)
+```
+docker run -p 5000:5000 --detach cloudacode/freecodetodo:v1.0.2 
+```
+
+## Pod Deployment(kubernetes)
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cloudacode-flask
+  namespace: cloudacode
+spec:
+  containers:
+  - name: cloudacode-flask
+    image: cloudacode/freecodetodo:v1.0.2 
+```
+
+## How To Run locally
 1. Install `virtualenv`:
 ```
 $ pip install virtualenv
