@@ -4,20 +4,34 @@ This repo has been updated to work with `Python v3.8` and up.
 
 ## Docker Container(test locally)
 ```
-docker run -p 5000:5000 --detach cloudacode/freecodetodo:v1.0.2 
+docker run -p 5000:5000 --detach cloudacode/freecodetodo:latest
 ```
 
 ## Pod Deployment(kubernetes)
 ```
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: cloudacode-flask
-  namespace: cloudacode
+  name: cloud-flask
+  labels:
+    app: cloud-flask
 spec:
-  containers:
-  - name: cloudacode-flask
-    image: cloudacode/freecodetodo:v1.0.2 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloud-flask
+  template:
+    metadata:
+      labels:
+        app: cloud-flask
+    spec:
+      containers:
+      - image: cloudacode/freecodetodo:latest
+        imagePullPolicy: Always
+        name: cloud-flask
+        ports:
+        - containerPort: 5000
+          protocol: TCP
 ```
 
 ## How To Run locally
