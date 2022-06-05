@@ -34,3 +34,9 @@ This server will start on port 5000 by default. You can change this in `app.py` 
 if __name__ == "__main__":
     app.run(debug=True, port=<desired port>)
 ```
+
+### Fix App Crash Error When Deployed On Heroku
+Simply add a `runtime.txt` file on the root directory with the content below:
+```
+python-3.9.4
+```
