@@ -33,7 +33,7 @@ def index():
         return render_template('index.html', tasks=tasks)
 
 
-@app.route('/delete/<int:id>')
+@app.route('/delete/<int:id>') #GET
 def delete(id):
     task_to_delete = Todo.query.get_or_404(id)
 
